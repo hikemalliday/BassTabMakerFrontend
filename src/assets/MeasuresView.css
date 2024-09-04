@@ -1,0 +1,201 @@
+.staff-row,
+.staff-row-active {
+  background-color: rgb(9, 12, 20);
+  margin: 3px;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 2px;
+  position: relative;
+}
+
+.staff-row-active {
+  outline: 2px solid rgb(0, 0, 120);
+}
+
+.fa-regular.fa-copy.staff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  color: black;
+  padding: 0.5px; /* Example: Padding around the icon */
+  border-radius: 50%; /* Make the border round */
+  background-color: #f0f0f0; /* Background color */
+  transition: transform 0.2s ease; /* Transition effect */
+  cursor: pointer;
+  position: absolute; /* Position relative to the parent */
+  top: 7px; /* Move the icon above the parent */
+  left: -37px; /* Align it to the outer top right corner */
+  z-index: 1000;
+}
+
+.fa-regular.fa-copy.staff-row:hover {
+  color: #1e90ff;
+}
+
+.fa-regular.fa-copy.staff-row:active {
+  color: #004d9a;
+}
+
+.delete-staff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  color: black;
+  padding: 0.5px; /* Example: Padding around the icon */
+  border-radius: 50%; /* Make the border round */
+  background-color: #f0f0f0; /* Background color */
+  transition: transform 0.2s ease; /* Transition effect */
+  cursor: pointer;
+  position: absolute; /* Position relative to the parent */
+  top: 40px; /* Move the icon above the parent */
+  left: -33px; /* Align it to the outer top right corner */
+  z-index: 1000;
+}
+
+.delete-staff-row:hover {
+  color: #1e90ff;
+}
+
+.delete-staff-row:active {
+  color: #004d9a;
+}
+
+.measures-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.measure-component-wrapper,
+.measure-component-wrapper-active {
+  margin: 5px;
+}
+
+.measure-component-wrapper-active {
+  box-sizing: border-box;
+  outline: 2px solid rgb(0, 0, 171);
+  position: relative; /* Parent is positioned relative */
+}
+
+.measures-container {
+  display: flex;
+  margin: 1px;
+}
+
+.measures-view-buttons {
+  margin-top: 5px;
+}
+
+.strings-container {
+  color: white;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2px;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+.string-note {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.cell-even,
+.cell-odd,
+.cell-even-active,
+.cell-odd-active {
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+  height: 5px; /* Ensure the cell takes up the full height of its container */
+  width: 5px; /* Ensure the cell takes up the full width of its container */ /* Optional: Add a border for visibility */
+  padding: 8px; /* Optional: Add some padding */
+  box-sizing: border-box; /* Ensures padding is included in the width/height */
+  background-color: rgb(17 24 39);
+  color: white;
+  font-size: small;
+}
+
+.cell-odd {
+  background-color: rgb(23, 33, 53);
+}
+
+.cell-even-active,
+.cell-odd-active {
+  background-color: rgb(26, 50, 102);
+}
+
+.cell-even:hover,
+.cell-odd:hover {
+  background-color: rgba(38, 0, 255, 0.721);
+}
+
+.cell-even:active,
+.cell-odd:active {
+  background-color: rgba(0, 11, 129, 0.67);
+}
+
+.cells-row {
+  display: flex;
+  margin: 1px;
+}
+
+.fa-regular.fa-copy.measure,
+.fa-regular.fa-copy.measure:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5px;
+  height: 5px;
+  color: black;
+  padding: 10px; /* Example: Padding around the icon */
+  border-radius: 50%; /* Make the border round */
+  background-color: #f0f0f0; /* Background color */
+  transition: transform 0.2s ease; /* Transition effect */
+  cursor: pointer;
+  position: absolute; /* Position relative to the parent */
+  top: -25px; /* Move the icon above the parent */
+  right: -21px; /* Align it to the outer top right corner */
+  z-index: 999; /* Ensure it appears above other elements */ /* Ensure it appears above other elements */
+}
+
+.fa-regular.fa-copy.measure:hover {
+  color: #1e90ff;
+}
+
+.fa-regular.fa-copy.measure:active {
+  color: #004d9a;
+}
+
+.delete-measure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5px;
+  height: 5px;
+  color: black;
+  padding: 0.5px; /* Example: Padding around the icon */
+  border-radius: 50%; /* Make the border round */
+  background-color: #f0f0f0; /* Background color */
+  transition: transform 0.2s ease; /* Transition effect */
+  cursor: pointer;
+  position: absolute; /* Position relative to the parent */
+  top: -25px; /* Move the icon above the parent */
+  right: 6px; /* Align it to the outer top right corner */
+  z-index: 999;
+}
+
+.delete-measure:hover {
+  color: #1e90ff;
+}
+
+.delete-measure:active {
+  color: #004d9a;
+}

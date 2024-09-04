@@ -1,0 +1,146 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-name-title {
+  margin-top: auto;
+  margin-bottom: 7px;
+}
+
+.fa-bars {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-bars:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-bars:active {
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-gear {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-gear:hover {
+  transform: rotate(20deg);
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-gear:active {
+  transform: rotate(20deg);
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-refresh {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-refresh:hover {
+  transform: rotate(20deg);
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-refresh:active {
+  transform: rotate(20deg);
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-plus {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-plus:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-plus:active {
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-music {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-music:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-music:active {
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-trash {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.fa-trash:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-trash:active {
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.far.fa-save.save-song {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  transition: transform 0.2s ease; /* Example: Transition effect */
+  cursor: pointer;
+}
+
+.far.fa-save.save-song:hover {
+  color: #1e90ff;
+}
+
+.far.fa-save.save-song:active {
+  color: #004d9a;
+}

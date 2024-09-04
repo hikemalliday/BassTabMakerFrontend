@@ -1,0 +1,9 @@
+# utils.tsx
+
+- 'songState' behaves as both the state we render from, as well as a 'cache', allowing the user
+   to swap around different songs and persists the unsaved song edit changes. This works because of
+   the useEffect in MeasureView. The useEffect first checks for a cached song, instead of using the query
+   from the backend.
+
+- 'useRefreshSong': Manually clears the song from 'songState' and fetches the song from the backend,
+   and then resets 'songState'. This was needed so that we can bypass the caching mechanism from MeasureView.useEffect.

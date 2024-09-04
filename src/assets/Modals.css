@@ -1,0 +1,37 @@
+/* Options Modal */
+/* Outer Modal */
+.MuiDialog-container.MuiDialog-scrollPaper {
+  transform: translateY(-10%);
+}
+
+/* Inner Modal */
+.MuiPaper-root.MuiPaper-elevation {
+  width: 450px;
+}
+
+/* DialogTitle */
+.MuiTypography-root.MuiTypography-h6 {
+  border-bottom: 0.1px solid rgb(219, 219, 219);
+  text-align: center;
+}
+
+/* List */
+.MuiList-root.MuiList-padding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+}
+
+/* Button in Options Modal */
+.MuiButton-root.MuiButton-textPrimary {
+  background-color: rgb(23, 33, 53);
+  border-radius: 0%;
+}
+
+.MuiButton-root.MuiButton-textPrimary:hover {
+  background-color: rgb(17 24 39);
+}
+
+.MuiButton-root.MuiButton-textPrimary:active {
+  background-color: rgb(29, 41, 66);
+}
