@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, createContext } from "react";
-
+import { jwtDecode } from "jwt-decode";
 interface ITokens {
   access: string;
   refresh: string;
@@ -46,10 +46,14 @@ export const LocalStorageProvider = ({
   useEffect(() => {
     const accessToken = localStorage.getItem("access");
     const refreshToken = localStorage.getItem("refresh");
+    const currentTime = Math.floor(Date.now() / 1000);
 
     if (access && refresh) {
-      setAccess(accessToken as string);
-      setRefresh(refreshToken as string);
+      const decode = jwtDecode(refresh);
+      if (decode.exp && decode.exp > currentTime) {
+        setAccess(accessToken as string);
+        setRefresh(refreshToken as string);
+      }
     }
     // Need a boolean for our <ProtectedRoute/>
     setIsLoading(false);

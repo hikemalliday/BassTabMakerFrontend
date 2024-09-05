@@ -5,7 +5,7 @@ import { Dashboard } from "./components/Dashboard";
 import { Login } from "./components/Login.tsx";
 import { SignUp } from "./components/SignUp.tsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
-import { SnackbarTest } from "./components/SnackbarTest.tsx";
+
 import { SnackbarComponent } from "./components/SnackbarComponent.tsx";
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/main" element={<MainPage />} />
           </Route>
-          <Route path="/snackbartest" element={<SnackbarTest />} />
         </Routes>
       </BrowserRouter>
       <SnackbarComponent />

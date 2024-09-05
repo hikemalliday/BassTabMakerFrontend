@@ -6,7 +6,7 @@ interface ICellContextProps {
   children: React.ReactNode;
 }
 
-interface ICellContext {
+export interface ICellContext {
   activeCell: string;
   setActiveCell: (cell: string) => void;
   activeMeasure: number | undefined;

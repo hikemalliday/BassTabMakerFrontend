@@ -28,7 +28,6 @@ export const Header = () => {
   const { refreshSong } = useRefreshSong();
 
   const handleSave = (): void => {
-    console.log("handleSave");
     mutateSong(unReduceSong(songState, songNameInt));
     addToast(`Song: ${songName} saved.`, "success");
   };

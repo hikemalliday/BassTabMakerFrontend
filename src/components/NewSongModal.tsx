@@ -38,7 +38,6 @@ export const NewSongModal = ({ open, setOpen }: IOptionsModalProps) => {
           navigate("/main");
           return;
         }
-        console.log("error song toast");
         addToast(`Song: ${songNameCreate} could not be created.`, "error");
         return resp.data;
       }
