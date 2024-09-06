@@ -4,7 +4,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import { MusicNote } from "@mui/icons-material/";
 import { useSongContext } from "../Context/SongContext";
 import { useSongNames } from "../requests";
 import { useNavigate } from "react-router-dom";
@@ -73,7 +73,7 @@ export const SongNamesModal = ({ open, setOpen }: ISongNamesModalProps) => {
               >
                 <ListItemButton>
                   <ListItemIcon>
-                    <MusicNoteIcon />
+                    <MusicNote />
                   </ListItemIcon>
                   <ListItemText primary={songName} />
                 </ListItemButton>
