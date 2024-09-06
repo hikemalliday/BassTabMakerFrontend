@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Dialog, DialogTitle, List, TextField } from "@mui/material/";
+import { Button, Dialog } from "@mui/material/";
 import { useSongContext } from "../Context/SongContext";
 import { useCreateSong, IUseCreateSongParams } from "../requests";
 import { useNavigate } from "react-router-dom";
@@ -49,48 +49,55 @@ export const NewSongModal = ({ open, setOpen }: IOptionsModalProps) => {
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>
-      <DialogTitle>Create Song</DialogTitle>
-      <List>
-        <TextField
-          label="song name"
-          variant="standard"
-          autoComplete="off"
-          value={songNameCreate}
-          onChange={(e) => setSongNameCreate(e.currentTarget.value)}
-        />
-        <TextField
-          label="artist name"
-          variant="standard"
-          autoComplete="off"
-          value={artistCreate}
-          onChange={(e) => setArtistCreate(e.target.value)}
-        />
-        <TextField
-          label="bpm"
-          variant="standard"
-          autoComplete="off"
-          value={bpmCreate}
-          onChange={(e) => setBpmCreate(Number(e.target.value))}
-          type="number"
-        />
-        <TextField
-          label="instrument"
-          variant="standard"
-          autoComplete="off"
-          value={instrumentCreate}
-          onChange={(e) => setInstrumentCreate(e.target.value)}
-        />
-        <TextField
-          label="time signature"
-          variant="standard"
-          autoComplete="off"
-          value={timeSignatureCreate}
-          onChange={(e) => setTimeSignatureCreate(Number(e.target.value))}
-          type="number"
-        />
-      </List>
-      <Button onClick={handleSave}>SAVE</Button>
-      <Button onClick={() => setOpen(false)}>X</Button>
+      <div className="modal-container">
+        <div className="modal-title">New Song</div>
+        <div className="modal-contents">
+          <label>Song Name</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="song name"
+            value={songNameCreate}
+            onChange={(e) => setSongNameCreate(e.currentTarget.value)}
+          />
+          <label>Artist</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="artist"
+            value={artistCreate}
+            onChange={(e) => setArtistCreate(e.target.value)}
+          />
+          <label>BPM</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="BPM"
+            value={bpmCreate}
+            onChange={(e) => setBpmCreate(Number(e.target.value))}
+          />
+          <label>Instrument</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="song name"
+            value={instrumentCreate}
+            onChange={(e) => setInstrumentCreate(e.target.value)}
+          />
+          <label>Time Signature</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="song name"
+            value={timeSignatureCreate}
+            onChange={(e) => setTimeSignatureCreate(Number(e.target.value))}
+          />
+        </div>
+        <div className="modal-buttons">
+          <Button onClick={handleSave}>SAVE</Button>
+          <Button onClick={() => setOpen(false)}>X</Button>
+        </div>
+      </div>
     </Dialog>
   );
 };

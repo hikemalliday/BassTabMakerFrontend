@@ -47,20 +47,19 @@ export const SongNamesModal = ({ open, setOpen }: ISongNamesModalProps) => {
       sx={{
         "& .MuiDialog-paper": {
           bgcolor: "black",
-          marginTop: "20vh",
+          marginTop: "10vh",
           padding: 0,
         },
       }}
     >
       <DialogContent
         sx={{
-          padding: 0,
+          padding: 1,
         }}
       >
         <List
           sx={{
             width: "400px",
-            marginTop: "auto",
           }}
           disablePadding
         >

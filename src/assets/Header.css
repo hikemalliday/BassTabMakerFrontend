@@ -3,6 +3,27 @@
   justify-content: space-between;
 }
 
+.logout-and-username {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.logout-button:hover,
+.logout-button:active {
+  color: #004d9a;
+  cursor: pointer;
+  user-select: none;
+}
+.logout-button:active {
+  color: #036ed9;
+}
+
+.username {
+  font-size: small;
+}
+
 .song-name-title {
   margin-top: auto;
   margin-bottom: 7px;
