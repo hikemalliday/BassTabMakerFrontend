@@ -1,50 +1,24 @@
-/* Options Modal */
-/* Outer Modal */
-.MuiDialog-container.MuiDialog-scrollPaper {
-  transform: translateY(-10%);
+.modal-container {
+  background-color: rgb(17 24 39);
+  color: white;
 }
 
-/* Inner Modal */
-.MuiPaper-root.MuiPaper-elevation.MuiAlertMessage {
-  width: 600px;
-  color: rgb(255, 255, 255);
-}
-
-/* DialogTitle */
-.MuiTypography-root.MuiTypography-h6 {
-  background-color: rgb(255, 255, 255);
-  border-bottom: 0.1px solid rgb(219, 219, 219);
+.modal-title {
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10px;
 }
 
-/* List */
-.MuiList-root.MuiList-padding {
-  padding-bottom: 10px;
-  padding-left: 10px;
-  margin: 25px;
+.modal-contents {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 10px;
 }
 
-/* Button in Options Modal */
-.MuiButton-root.MuiButton-textPrimary {
-  background-color: rgb(23, 33, 53);
-  border-radius: 0%;
-}
-
-.MuiButton-root.MuiButton-textPrimary:hover {
-  background-color: rgb(17 24 39);
-}
-
-.MuiButton-root.MuiButton-textPrimary:active {
-  background-color: rgb(29, 41, 66);
-}
-
-.MuiFormControl-root.MuiTextField-root {
-  margin: 10px;
-}
-
-.MuiDialogContent-root.css-1kxd7on-MuiDialogContent-root {
-  margin-top: 10px;
+.modal-buttons {
+  padding: 1px;
+  display: flex;
+  justify-content: space-between;
 }

@@ -45,46 +45,55 @@ export const OptionsModal = ({ open, setOpen }: IOptionsModalProps) => {
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>
-      <DialogTitle>Edit Song</DialogTitle>
-      <List>
-        <TextField
-          label="song name"
-          variant="standard"
-          autoComplete="off"
-          value={songMetadata["song_name"]}
-          onChange={(e) => handleChange(e, "song_name")}
-        />
-        <TextField
-          label="artist name"
-          variant="standard"
-          autoComplete="off"
-          value={songMetadata["artist"]}
-          onChange={(e) => handleChange(e, "artist")}
-        />
-        <TextField
-          label="bpm"
-          variant="standard"
-          autoComplete="off"
-          value={songMetadata["bpm"]}
-          onChange={(e) => handleChange(e, "bpm")}
-        />
-        <TextField
-          label="instrument"
-          variant="standard"
-          autoComplete="off"
-          value={songMetadata["instrument"]}
-          onChange={(e) => handleChange(e, "instrument")}
-        />
-        <TextField
-          label="time signature"
-          variant="standard"
-          autoComplete="off"
-          value={songMetadata["time_signature"]}
-          onChange={(e) => handleChange(e, "time_signature")}
-        />
-      </List>
-      <Button onClick={handleSave}>SAVE</Button>
-      <Button onClick={() => setOpen(false)}>X</Button>
+      <div className="modal-container">
+        <div className="modal-title">Edit Song</div>
+        <div className="modal-contents">
+          <label>Song Name</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="song name"
+            value={songMetadata["song_name"]}
+            onChange={(e) => handleChange(e, "song_name")}
+          />
+          <label>Song Name</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="artist"
+            value={songMetadata["artist"]}
+            onChange={(e) => handleChange(e, "artist")}
+          />
+          <label>BPM</label>
+          <input
+            className="modal-input"
+            type="number"
+            placeholder="bpm"
+            value={songMetadata["bpm"]}
+            onChange={(e) => handleChange(e, "bpm")}
+          />
+          <label>Instrument</label>
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="bpm"
+            value={songMetadata["instrument"]}
+            onChange={(e) => handleChange(e, "instrument")}
+          />
+          <label>Time Signature</label>
+          <input
+            className="modal-input"
+            type="number"
+            placeholder="4"
+            value={songMetadata["time_signature"]}
+            onChange={(e) => handleChange(e, "time_signature")}
+          />
+        </div>
+        <div className="modal-buttons">
+          <Button onClick={handleSave}>SAVE</Button>
+          <Button onClick={() => setOpen(false)}>X</Button>
+        </div>
+      </div>
     </Dialog>
   );
 };

@@ -31,6 +31,9 @@ html {
 .signup-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .login-card,
@@ -57,4 +60,8 @@ html {
 .login-input,
 .signup-title {
   color: white;
+}
+
+.signup-link {
+  font-size: small;
 }

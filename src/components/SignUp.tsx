@@ -11,13 +11,13 @@ export const SignUp = () => {
   const { mutateAsync, error } = useSignUp();
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const { setTokens } = useLocalStorageContext();
+  const { setAuthUser } = useLocalStorageContext();
 
   const handleSignUp = async () => {
     try {
       const resp = await mutateAsync({ username, password });
       if (resp.status === 201) {
-        setTokens(resp.data);
+        setAuthUser(resp.data);
         navigate("/");
       }
     } catch (err) {

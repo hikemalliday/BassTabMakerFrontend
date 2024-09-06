@@ -6,7 +6,8 @@ import { useSongContext } from "../Context/SongContext";
 
 export const useAxios = (enabled: boolean): AxiosInstance => {
   const mavigate = useNavigate();
-  const { access, refresh, setAccess } = useLocalStorageContext();
+  const { access, refresh, setAccess, clearLocalStorageContext } =
+    useLocalStorageContext();
   const { clearSongContext } = useSongContext();
   const axiosInstance = axios.create({
     baseURL: BACKEND_API,
@@ -48,6 +49,7 @@ export const useAxios = (enabled: boolean): AxiosInstance => {
           }
         } catch (err) {
           console.error(err);
+          clearLocalStorageContext();
           clearSongContext();
           mavigate("/login");
           return Promise.reject(err);

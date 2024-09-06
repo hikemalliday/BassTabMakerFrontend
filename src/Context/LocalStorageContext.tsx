@@ -14,9 +14,19 @@ interface ILocalStorageContext {
   setAccess: (accessToken: string) => void;
   refresh: string;
   setRefresh: (refreshToken: string) => void;
-  setTokens: (tokens: ITokens) => void;
+  setAuthUser: (tokens: ITokens) => void;
   isLoading: boolean;
-  clearTokens: () => void;
+  clearLocalStorageContext: () => void;
+  userId: number | null;
+  setUserId: (userId: number | null) => void;
+}
+
+interface IRefreshToken {
+  token_type: string;
+  exp: number;
+  iat: number;
+  jti: string;
+  user_id: number;
 }
 
 const LocalStorageContext = createContext<ILocalStorageContext | undefined>(
@@ -29,15 +39,19 @@ export const LocalStorageProvider = ({
   const [access, setAccess] = useState(localStorage.getItem("access") ?? "");
   const [refresh, setRefresh] = useState(localStorage.getItem("refresh") ?? "");
   const [isLoading, setIsLoading] = useState(true);
+  const [userId, setUserId] = useState<number | null>(null);
 
-  const setTokens = (tokens: ITokens) => {
+  const setAuthUser = (tokens: ITokens) => {
     setAccess(tokens.access);
     setRefresh(tokens.refresh);
     localStorage.setItem("access", tokens.access);
     localStorage.setItem("refresh", tokens.refresh);
+    const decode = jwtDecode(tokens.refresh) as IRefreshToken;
+    setUserId(decode.user_id);
   };
 
-  const clearTokens = () => {
+  const clearLocalStorageContext = () => {
+    setUserId(null);
     setAccess("");
     setRefresh("");
     localStorage.clear();
@@ -49,10 +63,13 @@ export const LocalStorageProvider = ({
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (access && refresh) {
-      const decode = jwtDecode(refresh);
+      const decode = jwtDecode(refresh) as IRefreshToken;
       if (decode.exp && decode.exp > currentTime) {
+        console.log("decode:");
+        console.log(decode);
         setAccess(accessToken as string);
         setRefresh(refreshToken as string);
+        setUserId(decode.user_id);
       }
     }
     // Need a boolean for our <ProtectedRoute/>
@@ -73,9 +90,11 @@ export const LocalStorageProvider = ({
         setAccess,
         refresh,
         setRefresh,
-        setTokens,
+        setAuthUser,
         isLoading,
-        clearTokens,
+        clearLocalStorageContext,
+        userId,
+        setUserId,
       }}
     >
       {children}

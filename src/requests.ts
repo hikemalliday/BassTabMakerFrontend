@@ -204,3 +204,23 @@ export const useDeleteSong = () => {
     },
   });
 };
+
+export const useUserNameQuery = (userId: number) => {
+  const axiosInstance = useAxios(true);
+  return useQuery({
+    queryFn: async () => {
+      try {
+        const resp = await axiosInstance.get(
+          BACKEND_API + `username/${userId}/`
+        );
+        if (resp.status === 200) {
+          return resp.data;
+        }
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
+    },
+    queryKey: [userId],
+  });
+};

@@ -5,13 +5,14 @@ import { AxiosError } from "axios";
 import { RenderError } from "./RenderError";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
   const { error, mutateAsync } = useLogin();
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const { setTokens } = useLocalStorageContext();
+  const { setAuthUser } = useLocalStorageContext();
 
   const handleInput = (e: React.ChangeEvent, state: string) => {
     const target = e.target as HTMLInputElement;
@@ -26,7 +27,7 @@ export const Login = () => {
     try {
       const resp = await mutateAsync({ username, password });
       if (resp.status === 200) {
-        setTokens(resp.data);
+        setAuthUser(resp.data);
         navigate("/");
       }
     } catch (err) {
@@ -65,6 +66,10 @@ export const Login = () => {
           LOGIN
         </Button>
         <RenderError errorObject={(error as AxiosError) ?? {}} />
+      </div>
+      <div className="signup-link">
+        Don't have an account? Sign up
+        <Link to="/signup"> here</Link>
       </div>
     </div>
   );
