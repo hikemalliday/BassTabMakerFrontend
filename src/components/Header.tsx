@@ -10,6 +10,7 @@ import DeleteSongModal from "./DeleteSongModal";
 import { unReduceSong } from "../utils";
 import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
+import { Tooltip } from "@mui/material";
 
 export const Header = () => {
   const {
@@ -61,40 +62,43 @@ export const Header = () => {
   return (
     <div className="header-container">
       <div className="header-icons">
-        <i
-          onClick={songNameInt !== 0 ? () => setIsModalOpen(true) : () => {}}
-          className="fa-solid fa-gear"
-          title="edit"
-        ></i>
-        <i
-          onClick={
-            !isSongNamesEmpty ? () => setIsSongNamesModalOpen(true) : () => {}
-          }
-          className="fa-solid fa-music"
-          title="select song"
-        ></i>
-        <i
-          onClick={() => setIsNewSongOpen(true)}
-          className="fa-solid fa-plus"
-          title="new song"
-        ></i>
-        <i
-          className="fa-solid fa-trash"
-          title="delete song"
-          onClick={
-            songNameInt !== 0 ? () => setIsDeleteSongModalOpen(true) : () => {}
-          }
-        ></i>
-        <i
-          onClick={handleRefresh}
-          className="fa fa-refresh"
-          title="reset changes"
-        ></i>
-        <i
-          onClick={handleSave}
-          className="far fa-save save-song"
-          title="save song"
-        ></i>
+        <Tooltip title="edit song">
+          <i
+            onClick={songNameInt !== 0 ? () => setIsModalOpen(true) : () => {}}
+            className="fa-solid fa-gear"
+          ></i>
+        </Tooltip>
+        <Tooltip title="select song">
+          <i
+            onClick={
+              !isSongNamesEmpty ? () => setIsSongNamesModalOpen(true) : () => {}
+            }
+            className="fa-solid fa-music"
+            title="select song"
+          ></i>
+        </Tooltip>
+        <Tooltip title="new song">
+          <i
+            onClick={() => setIsNewSongOpen(true)}
+            className="fa-solid fa-plus"
+          ></i>
+        </Tooltip>
+        <Tooltip title="delete song">
+          <i
+            className="fa-solid fa-trash"
+            onClick={
+              songNameInt !== 0
+                ? () => setIsDeleteSongModalOpen(true)
+                : () => {}
+            }
+          ></i>
+        </Tooltip>
+        <Tooltip title="reset changes">
+          <i onClick={handleRefresh} className="fa fa-refresh"></i>
+        </Tooltip>
+        <Tooltip title="save song">
+          <i onClick={handleSave} className="far fa-save save-song"></i>
+        </Tooltip>
       </div>
       <div className="logout-and-username">
         <div className="logout-button" onClick={handleLogout}>

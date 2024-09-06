@@ -10,8 +10,7 @@ import {
 import { useAxios } from "./hooks/useAxios";
 import { reduceSong } from "./utils";
 import { useSnackbarContext } from "./Context/SnackBarContext";
-
-export const BACKEND_API = "http://127.0.0.1:8000/api/";
+import { API_URL } from "./config";
 
 export interface IUseCreateSongParams {
   song_name?: string;
@@ -166,7 +165,7 @@ export const useRefreshSong = () => {
   ): Promise<void> => {
     try {
       const resp = await axiosInstance.get(
-        BACKEND_API + "song/" + songNameInt + "/"
+        API_URL + "song/" + songNameInt + "/"
       );
       if (resp.status === 200) {
         const song = resp.data;
@@ -190,7 +189,7 @@ export const useDeleteSong = () => {
     mutationFn: async (songNameInt: number) => {
       try {
         const resp = await axiosInstance.delete(
-          BACKEND_API + "song/" + songNameInt + "/"
+          API_URL + "song/" + songNameInt + "/"
         );
         if (resp.status === 204) {
           return resp.data;
@@ -210,9 +209,7 @@ export const useUserNameQuery = (userId: number) => {
   return useQuery({
     queryFn: async () => {
       try {
-        const resp = await axiosInstance.get(
-          BACKEND_API + `username/${userId}/`
-        );
+        const resp = await axiosInstance.get(API_URL + `username/${userId}/`);
         if (resp.status === 200) {
           return resp.data;
         }

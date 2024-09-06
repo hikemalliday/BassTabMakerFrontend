@@ -75,14 +75,18 @@ export const MeasuresView = () => {
         >
           {activeMeasure === i && (
             <>
-              <i
-                className="fa-regular fa-copy measure"
-                onClick={() => EventHandlers.copyMeasure(i)}
-              ></i>
-              <DeleteOutlinedIcon
-                className="delete-measure"
-                onClick={() => EventHandlers.deleteMeasure(i)}
-              />
+              <Tooltip title="copy measure">
+                <i
+                  className="fa-regular fa-copy measure"
+                  onClick={() => EventHandlers.copyMeasure(i)}
+                ></i>
+              </Tooltip>
+              <Tooltip title="delete measure">
+                <DeleteOutlinedIcon
+                  className="delete-measure"
+                  onClick={() => EventHandlers.deleteMeasure(i)}
+                />
+              </Tooltip>
             </>
           )}
           <Measure measure={measure} measureInt={i} />
@@ -99,11 +103,14 @@ export const MeasuresView = () => {
             >
               {activeRow === currentRowCount && (
                 <>
-                  <i
-                    className="fa-regular fa-copy staff-row"
-                    onClick={() => EventHandlers.copyStaffRow(currentRowCount)}
-                    title="copy row"
-                  ></i>
+                  <Tooltip title="delete row">
+                    <i
+                      className="fa-regular fa-copy staff-row"
+                      onClick={() =>
+                        EventHandlers.copyStaffRow(currentRowCount)
+                      }
+                    ></i>
+                  </Tooltip>
                   <Tooltip title="delete row">
                     <DeleteOutlinedIcon
                       className="delete-staff-row"

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { BACKEND_API } from "../requests";
+import { API_URL } from "../config";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
 import { useNavigate } from "react-router-dom";
 import { useSongContext } from "../Context/SongContext";
@@ -10,7 +10,7 @@ export const useAxios = (enabled: boolean): AxiosInstance => {
     useLocalStorageContext();
   const { clearSongContext } = useSongContext();
   const axiosInstance = axios.create({
-    baseURL: BACKEND_API,
+    baseURL: API_URL,
     withCredentials: true,
   });
   if (!enabled) {
@@ -37,7 +37,7 @@ export const useAxios = (enabled: boolean): AxiosInstance => {
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         try {
-          const resp = await axios.post(BACKEND_API + "token/refresh/", {
+          const resp = await axios.post(API_URL + "token/refresh/", {
             refresh: refresh,
           });
           if (resp.status === 200) {
