@@ -103,7 +103,7 @@ export const MeasuresView = () => {
             >
               {activeRow === currentRowCount && (
                 <>
-                  <Tooltip title="delete row">
+                  <Tooltip title="copy row">
                     <i
                       className="fa-regular fa-copy staff-row"
                       onClick={() =>
