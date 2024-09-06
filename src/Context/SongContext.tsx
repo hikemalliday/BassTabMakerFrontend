@@ -5,7 +5,7 @@ interface ISongContextProps {
   children: React.ReactNode;
 }
 
-interface ISongContext {
+export interface ISongContext {
   songState: ISongState;
   setSongState: (songState: ISongState) => void;
   songName: string;

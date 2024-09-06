@@ -7,105 +7,32 @@ import {
   reduceSong,
   renderStringsContainer,
   reduceSongMetadata,
-  createPastedMeasure,
-  handleDeleteMeasure,
-  handleCopyStaffRow,
-  handleDeleteStaffRow,
-  handlePasteStaffRow,
+ 
 } from "../utils";
 import { Measure } from "./Measure";
 import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useCellContext } from "../Context/CellContext";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import Tooltip from "@mui/material/Tooltip";
+import { MeasuresViewHandlers } from "../classes/MeasureViewHandlers";
 
 export const MeasuresView = () => {
   const { songState, setSongState, songNameInt, setSongMetadata, songName } =
     useSongContext();
   const { data: songData, isLoading: isSongDataLoading } =
     useSongQuery(songNameInt);
-  const { addToast } = useSnackbarContext();
-  const {
-    activeMeasure,
-    activeRow,
-    setActiveRow,
-    setActiveMeasure,
-    copiedMeasure,
-    setCopiedMeasure,
-    copiedStaffRow,
-    setCopiedStaffRow,
-  } = useCellContext();
+  const { activeMeasure, activeRow, copiedMeasure, copiedStaffRow } =
+    useCellContext();
 
-  const addMeasure = (): void => {
-    const stateCopy = { ...songState };
-    stateCopy[songNameInt].push({});
-    setSongState(stateCopy);
-  };
+  const SongContext = useSongContext();
+  const CellContext = useCellContext();
+  const SnackbarContext = useSnackbarContext();
 
-  const removeMeasure = (): void => {
-    if (songState[songNameInt].length === 1) return;
-    const stateCopy = { ...songState };
-    stateCopy[songNameInt].pop();
-    setSongState(stateCopy);
-  };
-
-  const handleRowClick = (rowInt: number): void => {
-    setActiveRow(rowInt);
-  };
-
-  const handleMeasureClick = (i: number): void => {
-    setActiveMeasure(i);
-  };
-
-  const pasteMeasure = (): void => {
-    const stateCopy = { ...songState };
-    const finalMeasureIndex = stateCopy[songNameInt].length;
-    const pastedMeasure = createPastedMeasure(
-      copiedMeasure as IMeasureState,
-      finalMeasureIndex
-    );
-    stateCopy[songNameInt].push(pastedMeasure);
-    setSongState(stateCopy);
-  };
-
-  const copyMeasure = (measureInt: number): void => {
-    const stateCopy = { ...songState };
-    setCopiedMeasure(stateCopy[songNameInt][measureInt]);
-    addToast("Measure copied", "info");
-  };
-
-  const deleteMeasure = (measureInt: number, songNameInt: number): void => {
-    const stateCopy = { ...songState };
-    const newState = handleDeleteMeasure(measureInt, stateCopy, songNameInt);
-    setSongState(newState);
-    addToast("Measure deleted", "info");
-  };
-
-  const copyStaffRow = (currentRow: number, songNameInt: number): void => {
-    const stateCopy = { ...songState };
-    const copiedRow = handleCopyStaffRow(currentRow, stateCopy, songNameInt);
-    setCopiedStaffRow(copiedRow);
-  };
-
-  const pasteStaffRow = (songNameInt: number) => {
-    const stateCopy = { ...songState };
-    try {
-      const newState = handlePasteStaffRow(
-        stateCopy,
-        songNameInt,
-        copiedStaffRow as IMeasureState[]
-      );
-      setSongState(newState);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const deleteStaffRow = (currentRow: number, songNameInt: number): void => {
-    const stateCopy = { ...songState };
-    handleDeleteStaffRow(currentRow, stateCopy, songNameInt);
-    addToast(`Staff row deleted.`, "info");
-  };
+  const EventHandlers = new MeasuresViewHandlers({
+    songContext: SongContext,
+    cellContext: CellContext,
+    snackbarContext: SnackbarContext,
+  });
 
   const determineMeasureClass = (measureInt: number): string => {
     let className = "measure-component-wrapper";
@@ -145,17 +72,17 @@ export const MeasuresView = () => {
         <div
           key={i}
           className={determineMeasureClass(i)}
-          onClick={() => handleMeasureClick(i)}
+          onClick={() => EventHandlers.measureClick(i)}
         >
           {activeMeasure === i && (
             <>
               <i
                 className="fa-regular fa-copy measure"
-                onClick={() => copyMeasure(i)}
+                onClick={() => EventHandlers.copyMeasure(i)}
               ></i>
               <DeleteOutlinedIcon
                 className="delete-measure"
-                onClick={() => deleteMeasure(i, songNameInt)}
+                onClick={() => EventHandlers.deleteMeasure(i)}
               />
             </>
           )}
@@ -169,20 +96,20 @@ export const MeasuresView = () => {
             <div
               key={i}
               className={determineRowClass(currentRowCount)}
-              onClick={() => handleRowClick(currentRowCount)}
+              onClick={() => EventHandlers.rowClick(currentRowCount)}
             >
               {activeRow === currentRowCount && (
                 <>
                   <i
                     className="fa-regular fa-copy staff-row"
-                    onClick={() => copyStaffRow(currentRowCount, songNameInt)}
+                    onClick={() => EventHandlers.copyStaffRow(currentRowCount)}
                     title="copy row"
                   ></i>
                   <Tooltip title="delete row">
                     <DeleteOutlinedIcon
                       className="delete-staff-row"
                       onClick={() =>
-                        deleteStaffRow(currentRowCount, songNameInt)
+                        EventHandlers.deleteStaffRow(currentRowCount)
                       }
                     />
                   </Tooltip>
@@ -206,21 +133,27 @@ export const MeasuresView = () => {
       {renderMeasures(songState[songNameInt] ?? [])}
       {songState[songNameInt] !== undefined ? (
         <div className="measures-view-buttons">
-          <button onClick={addMeasure} title="add measure">
+          <button
+            onClick={() => EventHandlers.addMeasure()}
+            title="add measure"
+          >
             +
           </button>
-          <button onClick={removeMeasure} title="remove measure">
+          <button
+            onClick={() => EventHandlers.removeMeasure()}
+            title="remove measure"
+          >
             -
           </button>
           <button
-            onClick={pasteMeasure}
+            onClick={() => EventHandlers.pasteMeasure()}
             title="paste measure"
             disabled={copiedMeasure == undefined}
           >
             Paste Measure
           </button>
           <button
-            onClick={() => pasteStaffRow(songNameInt)}
+            onClick={() => EventHandlers.pasteStaffRow()}
             title="paste staff row"
             disabled={copiedStaffRow == undefined}
           >

@@ -41,11 +41,11 @@ export default function DeleteSongModal({
     <React.Fragment>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle id="delete-song-modal-title">
-          {`Are you sure you want to delete song: ${songName}`}
+          {`Are you sure you want to delete song: ${songName}?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            This actions cannot be undone.
+            This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

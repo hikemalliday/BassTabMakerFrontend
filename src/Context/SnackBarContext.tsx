@@ -4,7 +4,7 @@ interface ISnackbarContextProps {
   children: ReactNode;
 }
 
-interface SnackbarContext {
+export interface ISnackbarContext {
   toasts: IToast[];
   removeToast: (index: number) => void;
   addToast: (text: string, severity: ISeverity) => void;
@@ -19,13 +19,12 @@ interface IToast {
 
 export type ISeverity = "error" | "info" | "success" | "warning";
 
-const SnackbarContext = createContext<SnackbarContext | undefined>(undefined);
+const SnackbarContext = createContext<ISnackbarContext | undefined>(undefined);
 
 export const SnackbarProvider = ({ children }: ISnackbarContextProps) => {
   const [toasts, setToasts] = useState<IToast[]>([]);
 
   const removeToast = (index: number) => {
-    console.log("removeToast.index: ", index);
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== index));
   };
   const addToast = (text: string, severity: ISeverity) => {

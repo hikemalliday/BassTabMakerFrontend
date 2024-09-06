@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { NewSongModal } from "./NewSongModal";
 import { SongNamesModal } from "./SongNamesModal";
+import { useSongContext } from "../Context/SongContext";
 
 export const Dashboard = () => {
   const [newSongModalOpen, setNewSongModalOpen] = useState(false);
   const [songNamesModalOpen, setSongNamesModalOpen] = useState(false);
+  const { songNames } = useSongContext();
 
   return (
     <div className="dashboard-container">
@@ -18,13 +20,15 @@ export const Dashboard = () => {
         >
           CREATE
         </Button>
-        <Button
-          id="dashboard-card"
-          onClick={() => setSongNamesModalOpen(true)}
-          variant="outlined"
-        >
-          SELECT
-        </Button>
+        {Object.keys(songNames).length > 0 && (
+          <Button
+            id="dashboard-card"
+            onClick={() => setSongNamesModalOpen(true)}
+            variant="outlined"
+          >
+            SELECT
+          </Button>
+        )}
       </div>
       {<NewSongModal open={newSongModalOpen} setOpen={setNewSongModalOpen} />}
       {

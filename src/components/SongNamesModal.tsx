@@ -20,7 +20,7 @@ export const SongNamesModal = ({ open, setOpen }: ISongNamesModalProps) => {
   const navigate = useNavigate();
   const { songNames, setSongNames, songState, setSongNameInt } =
     useSongContext();
-  const { setCopiedMeasure } = useCellContext();
+  const { setCopiedMeasure, setCopiedStaffRow } = useCellContext();
   const { data } = useSongNames(songState);
   const listItemStyle = {
     bgcolor: "rgb(17 24 39)",
@@ -31,6 +31,7 @@ export const SongNamesModal = ({ open, setOpen }: ISongNamesModalProps) => {
   const handleClick = (pk: number) => {
     setSongNameInt(pk);
     setCopiedMeasure(undefined);
+    setCopiedStaffRow(undefined);
     navigate("/main");
   };
 
@@ -46,7 +47,7 @@ export const SongNamesModal = ({ open, setOpen }: ISongNamesModalProps) => {
       sx={{
         "& .MuiDialog-paper": {
           bgcolor: "black",
-          marginTop: "20vh", // Adjust this value to control how far down the dialog appears
+          marginTop: "20vh",
           padding: 0,
         },
       }}

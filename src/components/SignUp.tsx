@@ -17,7 +17,6 @@ export const SignUp = () => {
     try {
       const resp = await mutateAsync({ username, password });
       if (resp.status === 201) {
-        console.log("ACCOUNT CREATED");
         setTokens(resp.data);
         navigate("/");
       }
@@ -37,7 +36,6 @@ export const SignUp = () => {
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log("ENTER FOUND");
       void handleSignUp();
     }
   };
