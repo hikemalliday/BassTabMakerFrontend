@@ -128,7 +128,7 @@
   color: #1179e1; /* Example: Change color on hover */
 }
 
-.fa-trash {
+.fa-trash.header {
   color: #0e0a28; /* Example: Tomato color */
   font-size: 24px; /* Example: Size of the icon */
   padding: 10px; /* Example: Padding around the icon */

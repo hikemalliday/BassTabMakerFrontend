@@ -11,7 +11,6 @@ import {
 import { Measure } from "./Measure";
 import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useCellContext } from "../Context/CellContext";
-import { DeleteOutlined } from "@mui/icons-material/";
 import Tooltip from "@mui/material/Tooltip";
 import { MeasuresViewHandlers } from "../classes/MeasureViewHandlers";
 
@@ -82,10 +81,10 @@ export const MeasuresView = () => {
                 ></i>
               </Tooltip>
               <Tooltip title="delete measure">
-                <DeleteOutlined
-                  className="delete-measure"
+                <i
+                  className="fa-solid fa-trash delete-measure"
                   onClick={() => EventHandlers.deleteMeasure(i)}
-                />
+                ></i>
               </Tooltip>
             </>
           )}
@@ -112,12 +111,12 @@ export const MeasuresView = () => {
                     ></i>
                   </Tooltip>
                   <Tooltip title="delete row">
-                    <DeleteOutlined
-                      className="delete-staff-row"
+                    <i
+                      className="fa-solid fa-trash delete-staff-row"
                       onClick={() =>
                         EventHandlers.deleteStaffRow(currentRowCount)
                       }
-                    />
+                    ></i>
                   </Tooltip>
                 </>
               )}

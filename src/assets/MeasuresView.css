@@ -174,14 +174,14 @@
   color: #004d9a;
 }
 
-.delete-measure {
+.fa-solid.fa-trash.delete-measure {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 5px;
   height: 5px;
   color: black;
-  padding: 0.5px; /* Example: Padding around the icon */
+  padding: 10px; /* Example: Padding around the icon */
   border-radius: 50%; /* Make the border round */
   background-color: #f0f0f0; /* Background color */
   transition: transform 0.2s ease; /* Transition effect */
@@ -192,10 +192,28 @@
   z-index: 999;
 }
 
-.delete-measure:hover {
+.fa-solid.fa-trash.delete-measure:hover {
   color: #1e90ff;
 }
 
-.delete-measure:active {
+.fa-solid.fa-trash.delete-measure:active {
   color: #004d9a;
+}
+
+.fa-solid.fa-trash.delete-staff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5px;
+  height: 5px;
+  color: black;
+  padding: 10px; /* Example: Padding around the icon */
+  border-radius: 50%; /* Make the border round */
+  background-color: #f0f0f0; /* Background color */
+  transition: transform 0.2s ease; /* Transition effect */
+  cursor: pointer;
+  position: absolute; /* Position relative to the parent */
+  top: 40px; /* Move the icon above the parent */
+  right: 6px; /* Align it to the outer top right corner */
+  z-index: 999;
 }

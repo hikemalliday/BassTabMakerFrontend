@@ -74,7 +74,6 @@ export const Header = () => {
               !isSongNamesEmpty ? () => setIsSongNamesModalOpen(true) : () => {}
             }
             className="fa-solid fa-music"
-            title="select song"
           ></i>
         </Tooltip>
         <Tooltip title="new song">
@@ -85,7 +84,7 @@ export const Header = () => {
         </Tooltip>
         <Tooltip title="delete song">
           <i
-            className="fa-solid fa-trash"
+            className="fa-solid fa-trash header"
             onClick={
               songNameInt !== 0
                 ? () => setIsDeleteSongModalOpen(true)
