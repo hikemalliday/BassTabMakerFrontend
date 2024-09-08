@@ -1,7 +1,7 @@
 import { useCellContext } from "../Context/CellContext";
 import { useSongContext } from "../Context/SongContext";
 import { IMeasureState } from "../types";
-import { handleCellInput, focusCell } from "../utils";
+import { handleCellInput, focusCell, getStringsArray } from "../utils";
 
 interface IMeasureProps {
   measure: IMeasureState;
@@ -10,7 +10,8 @@ interface IMeasureProps {
 
 export const Measure = ({ measure, measureInt }: IMeasureProps) => {
   const { activeCell, setActiveCell } = useCellContext();
-  const { songState, setSongState, songNameInt } = useSongContext();
+  const { songState, setSongState, songNameInt, instrument, timeSignature } =
+    useSongContext();
 
   const handleCellClick = (key: string): void => {
     setActiveCell(key);
@@ -19,7 +20,7 @@ export const Measure = ({ measure, measureInt }: IMeasureProps) => {
 
   const colInts = (): number[] => {
     const results = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < timeSignature * 4; i++) {
       results.push(i);
     }
     return results;
@@ -40,7 +41,7 @@ export const Measure = ({ measure, measureInt }: IMeasureProps) => {
     return className;
   };
 
-  const strings = [0, 1, 2, 3];
+  const strings = getStringsArray(instrument as string);
   return (
     <>
       {strings.map((_, y) => {

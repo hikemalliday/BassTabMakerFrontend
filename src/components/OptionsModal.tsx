@@ -10,8 +10,15 @@ export interface IOptionsModalProps {
 }
 
 export const OptionsModal = ({ open, setOpen }: IOptionsModalProps) => {
-  const { songMetadata, setSongMetadata, songNameInt, setSongName, songName } =
-    useSongContext();
+  const {
+    songMetadata,
+    setSongMetadata,
+    songNameInt,
+    setSongName,
+    songName,
+    setInstrument,
+    setTimeSignature,
+  } = useSongContext();
   const { mutateAsync } = useSaveSongMetadata();
   const { addToast } = useSnackbarContext();
 
@@ -20,11 +27,14 @@ export const OptionsModal = ({ open, setOpen }: IOptionsModalProps) => {
       id: songNameInt,
       metadata: songMetadata,
     };
+
     try {
       const resp = await mutateAsync(saveSongMetadataParams);
       if (resp) {
         if (resp.status === 200) {
           setSongName(resp.data.song_name);
+          setInstrument(resp.data.instrument);
+          setTimeSignature(resp.data.time_signature);
           addToast(`Song: ${songName} edited.`, "success");
         }
         return resp.data;

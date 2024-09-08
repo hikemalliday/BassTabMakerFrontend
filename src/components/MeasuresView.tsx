@@ -15,13 +15,20 @@ import Tooltip from "@mui/material/Tooltip";
 import { MeasuresViewHandlers } from "../classes/MeasureViewHandlers";
 
 export const MeasuresView = () => {
-  const { songState, setSongState, songNameInt, setSongMetadata, songName } =
-    useSongContext();
+  const {
+    songState,
+    setSongState,
+    songNameInt,
+    setSongMetadata,
+    songName,
+    instrument,
+    setInstrument,
+    setTimeSignature,
+  } = useSongContext();
   const { data: songData, isLoading: isSongDataLoading } =
     useSongQuery(songNameInt);
   const { activeMeasure, activeRow, copiedMeasure, copiedStaffRow } =
     useCellContext();
-
   const SongContext = useSongContext();
   const CellContext = useCellContext();
   const SnackbarContext = useSnackbarContext();
@@ -46,7 +53,10 @@ export const MeasuresView = () => {
 
   useEffect(() => {
     if (songData) {
-      setSongMetadata(reduceSongMetadata(songData));
+      const reducedSongMetadata = reduceSongMetadata(songData);
+      setSongMetadata(reducedSongMetadata);
+      setInstrument(reducedSongMetadata.instrument);
+      setTimeSignature(reducedSongMetadata.time_signature);
       // If cache exists, use that instead of query
       if (songNameInt in songState) {
         return;
@@ -120,7 +130,7 @@ export const MeasuresView = () => {
                   </Tooltip>
                 </>
               )}
-              {renderStringsContainer("bass")}
+              {renderStringsContainer(instrument as string)}
               {currentRow}
             </div>
           </>

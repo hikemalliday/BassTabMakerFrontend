@@ -65,8 +65,6 @@ export const LocalStorageProvider = ({
     if (access && refresh) {
       const decode = jwtDecode(refresh) as IRefreshToken;
       if (decode.exp && decode.exp > currentTime) {
-        console.log("decode:");
-        console.log(decode);
         setAccess(accessToken as string);
         setRefresh(refreshToken as string);
         setUserId(decode.user_id);

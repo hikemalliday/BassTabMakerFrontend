@@ -16,6 +16,10 @@ export interface ISongContext {
   setSongNames: (songNames: Record<string, number>) => void;
   songMetadata: ISongMetadata;
   setSongMetadata: (metadata: ISongMetadata) => void;
+  instrument: string | undefined;
+  setInstrument: (instrument: string | undefined) => void;
+  timeSignature: number;
+  setTimeSignature: (timeSignature: number) => void;
   clearSongContext: () => void;
 }
 
@@ -36,6 +40,9 @@ export const SongContextProvider = ({ children }: ISongContextProps) => {
   const [songNames, setSongNames] = useState<Record<string, number>>({});
   const [songMetadata, setSongMetadata] =
     useState<ISongMetadata>(metadataPlaceholder);
+  const [instrument, setInstrument] = useState<string | undefined>(undefined);
+  const [timeSignature, setTimeSignature] = useState(4);
+
   const clearSongContext = () => {
     setSongState({});
     setSongNameInt(0);
@@ -57,6 +64,10 @@ export const SongContextProvider = ({ children }: ISongContextProps) => {
         songMetadata,
         setSongMetadata,
         clearSongContext,
+        instrument,
+        setInstrument,
+        timeSignature,
+        setTimeSignature,
       }}
     >
       {children}

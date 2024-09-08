@@ -211,3 +211,13 @@ export const renderStringsContainer = (instrument: string): React.ReactNode => {
     );
   }
 };
+
+export const getStringsArray = (instrument: string) => {
+  if (instrument === "bass") {
+    return [0, 1, 2, 3];
+  } else if (instrument === "guitar") {
+    return [0, 1, 2, 3, 4, 5];
+  } else {
+    return [0, 1, 2, 3];
+  }
+};
