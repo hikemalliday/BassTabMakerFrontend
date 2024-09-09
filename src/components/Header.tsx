@@ -12,6 +12,7 @@ import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
 import { Tooltip } from "@mui/material";
 
+console.log("test ci");
 export const Header = () => {
   const {
     songNameInt,
