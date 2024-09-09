@@ -33,6 +33,7 @@ export const Header = () => {
   const { userId, clearLocalStorageContext } = useLocalStorageContext();
   const { data } = useUserNameQuery(userId as number);
 
+  // @ts-expect-error fix later
   const handleCreateSoundArray = (songState, songNameInt, timeSignature) => {
     const soundArray = createSoundArray(songState, songNameInt, timeSignature);
     playSong(120, 4, soundArray);
