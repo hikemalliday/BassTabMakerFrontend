@@ -7,11 +7,10 @@ import { useRefreshSong, useSaveSong, useUserNameQuery } from "../requests";
 import { NewSongModal } from "./NewSongModal";
 import { SongNamesModal } from "./SongNamesModal";
 import DeleteSongModal from "./DeleteSongModal";
-import { unReduceSong } from "../utils";
+import { unReduceSong, createSoundArray, playSong } from "../utils";
 import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
 import { Tooltip } from "@mui/material";
-
 
 export const Header = () => {
   const {
@@ -21,6 +20,8 @@ export const Header = () => {
     songName,
     songNames,
     setSongName,
+    timeSignature,
+    clearSongContext,
   } = useSongContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isNewSongOpen, setIsNewSongOpen] = useState(false);
@@ -29,9 +30,13 @@ export const Header = () => {
   const { addToast } = useSnackbarContext();
   const { mutate: mutateSong } = useSaveSong();
   const { refreshSong } = useRefreshSong();
-  const { clearSongContext } = useSongContext();
   const { userId, clearLocalStorageContext } = useLocalStorageContext();
   const { data } = useUserNameQuery(userId as number);
+
+  const handleCreateSoundArray = (songState, songNameInt, timeSignature) => {
+    const soundArray = createSoundArray(songState, songNameInt, timeSignature);
+    playSong(120, 4, soundArray);
+  };
 
   const handleSave = (): void => {
     mutateSong(unReduceSong(songState, songNameInt));
@@ -100,6 +105,13 @@ export const Header = () => {
           <i onClick={handleSave} className="far fa-save save-song"></i>
         </Tooltip>
       </div>
+      <button
+        onClick={() =>
+          handleCreateSoundArray(songState, songNameInt, timeSignature)
+        }
+      >
+        TEST SOUND ARRAY
+      </button>
       <div className="logout-and-username">
         <div className="logout-button" onClick={handleLogout}>
           LOGOUT

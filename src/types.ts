@@ -22,6 +22,7 @@ export interface ISongState {
   [key: string | number]: IMeasureState[];
 }
 
+// Probably too generic
 export interface IMeasureState {
   [key: string]: number | null;
 }
@@ -51,4 +52,15 @@ export interface ILoginParams {
 export interface ISignUpParams {
   username: string;
   password: string;
+}
+
+// Probably too generic
+export interface ISoundMeasure {
+  [key: string]: number;
+}
+
+export interface ISoundNote {
+  fret: number;
+  string: string;
+  timeInterval: number;
 }

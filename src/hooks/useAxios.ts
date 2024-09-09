@@ -19,7 +19,11 @@ export const useAxios = (enabled: boolean): AxiosInstance => {
 
   axiosInstance.interceptors.request.use(
     (config) => {
-      config.headers["Authorization"] = `Bearer ${access}`;
+      // If the retry machanism sets the header via refresh token, we dont want to use
+      // the one that is in useState:
+      if (!config.headers["Authorization"]) {
+        config.headers["Authorization"] = `Bearer ${access}`;
+      }
       return config;
     },
     (error) => {
@@ -33,7 +37,6 @@ export const useAxios = (enabled: boolean): AxiosInstance => {
     },
     async (error) => {
       const originalRequest = error.config;
-
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         try {
