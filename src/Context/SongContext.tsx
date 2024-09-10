@@ -20,6 +20,8 @@ export interface ISongContext {
   setInstrument: (instrument: string | undefined) => void;
   timeSignature: number;
   setTimeSignature: (timeSignature: number) => void;
+  bpm: number;
+  setBpm: (bpm: number) => void;
   clearSongContext: () => void;
 }
 
@@ -42,6 +44,7 @@ export const SongContextProvider = ({ children }: ISongContextProps) => {
     useState<ISongMetadata>(metadataPlaceholder);
   const [instrument, setInstrument] = useState<string | undefined>(undefined);
   const [timeSignature, setTimeSignature] = useState(4);
+  const [bpm, setBpm] = useState(140);
 
   const clearSongContext = () => {
     setSongState({});
@@ -68,6 +71,8 @@ export const SongContextProvider = ({ children }: ISongContextProps) => {
         setInstrument,
         timeSignature,
         setTimeSignature,
+        bpm,
+        setBpm,
       }}
     >
       {children}

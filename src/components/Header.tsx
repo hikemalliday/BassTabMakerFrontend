@@ -23,24 +23,27 @@ export const Header = () => {
     setSongName,
     timeSignature,
     clearSongContext,
+    bpm,
   } = useSongContext();
+  const { userId, clearLocalStorageContext } = useLocalStorageContext();
+  const { addToast } = useSnackbarContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isNewSongOpen, setIsNewSongOpen] = useState(false);
   const [isSongNamesModalOpen, setIsSongNamesModalOpen] = useState(false);
   const [isDeleteSongModalOpen, setIsDeleteSongModalOpen] = useState(false);
-  const { addToast } = useSnackbarContext();
-  const { mutate: mutateSong } = useSaveSong();
   const { refreshSong } = useRefreshSong();
-  const { userId, clearLocalStorageContext } = useLocalStorageContext();
   const { data } = useUserNameQuery(userId as number);
+  const { mutate: mutateSong } = useSaveSong();
 
   const handleCreateSoundArray = (
     songState: ISongState,
     songNameInt: number,
-    timeSignature: number
+    timeSignature: number,
+    bpm: number
   ) => {
+    console.log(bpm);
     const soundArray = createSoundArray(songState, songNameInt, timeSignature);
-    playSong(140, 4, soundArray);
+    playSong(bpm, 4, soundArray);
   };
 
   const handleSave = (): void => {
@@ -112,7 +115,7 @@ export const Header = () => {
       </div>
       <button
         onClick={() =>
-          handleCreateSoundArray(songState, songNameInt, timeSignature)
+          handleCreateSoundArray(songState, songNameInt, timeSignature, bpm)
         }
       >
         TEST SOUND ARRAY

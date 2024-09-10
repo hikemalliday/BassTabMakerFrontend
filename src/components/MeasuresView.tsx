@@ -24,6 +24,7 @@ export const MeasuresView = () => {
     instrument,
     setInstrument,
     setTimeSignature,
+    setBpm,
   } = useSongContext();
   const { data: songData, isLoading: isSongDataLoading } =
     useSongQuery(songNameInt);
@@ -57,6 +58,7 @@ export const MeasuresView = () => {
       setSongMetadata(reducedSongMetadata);
       setInstrument(reducedSongMetadata.instrument);
       setTimeSignature(reducedSongMetadata.time_signature);
+      setBpm(reducedSongMetadata.bpm);
       // If cache exists, use that instead of query
       if (songNameInt in songState) {
         return;

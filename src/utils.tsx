@@ -258,7 +258,7 @@ export const createSoundArray = (
 };
 // #^ This currently returns an array of arrays, where
 export const playSong = (
-  bpm: number,
+  bpm: number = 140,
   timeSignature: number = 4,
   soundArray: ISoundNote[][]
 ) => {
@@ -374,9 +374,6 @@ export const playSong = (
     const note = noteMap[key];
     synth.triggerAttackRelease(note, "16n");
   }
-
-  // const bassNoteMap = generateBassNoteMap();
-  console.log(bassNoteMap);
 
   Tone.Transport.stop();
   Tone.Transport.cancel();
