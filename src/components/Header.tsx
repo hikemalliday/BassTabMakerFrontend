@@ -11,8 +11,8 @@ import { unReduceSong, createSoundArray, playSong } from "../utils";
 import { useSnackbarContext } from "../Context/SnackBarContext";
 import { useLocalStorageContext } from "../Context/LocalStorageContext";
 import { Tooltip } from "@mui/material";
+import { ISongState } from "../types";
 
-console.log("test ci");
 export const Header = () => {
   const {
     songNameInt,
@@ -34,10 +34,13 @@ export const Header = () => {
   const { userId, clearLocalStorageContext } = useLocalStorageContext();
   const { data } = useUserNameQuery(userId as number);
 
-  // @ts-expect-error fix later
-  const handleCreateSoundArray = (songState, songNameInt, timeSignature) => {
+  const handleCreateSoundArray = (
+    songState: ISongState,
+    songNameInt: number,
+    timeSignature: number
+  ) => {
     const soundArray = createSoundArray(songState, songNameInt, timeSignature);
-    playSong(120, 4, soundArray);
+    playSong(140, 4, soundArray);
   };
 
   const handleSave = (): void => {
