@@ -18,6 +18,9 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Mark directory as safe
+        run: ssh github-deploy@45.55.129.24 -t "git config --global --add safe.directory /home/mike/projects/BassTabMakerFrontend"
+
       - name: SSH into server and update
         run: |
           ssh github-deploy@45.55.129.24 -t "/home/mike/projects/BassTabMakerFrontend/update.sh"
