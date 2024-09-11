@@ -165,3 +165,39 @@
 .far.fa-save.save-song:active {
   color: #004d9a;
 }
+
+.fa-play {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  cursor: pointer;
+}
+
+.fa-play:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-play:active {
+  color: #1179e1; /* Example: Change color on hover */
+}
+
+.fa-stop {
+  color: #0e0a28; /* Example: Tomato color */
+  font-size: 24px; /* Example: Size of the icon */
+  padding: 10px; /* Example: Padding around the icon */
+  border: 2px solid #333; /* Example: Border around the icon */
+  border-radius: 50%; /* Example: Make the border round */
+  background-color: #f0f0f0; /* Example: Background color */
+  cursor: pointer;
+}
+
+.fa-stop:hover {
+  color: #1e90ff; /* Example: Change color on hover */
+}
+
+.fa-stop:active {
+  color: #1179e1; /* Example: Change color on hover */
+}

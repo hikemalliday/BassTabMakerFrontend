@@ -29,6 +29,7 @@ export const Measure = ({ measure, measureInt }: IMeasureProps) => {
   let counter = 1;
   const determineCellClass = (key: string): string => {
     let className = "";
+
     counter += 1;
     if (counter % 2 === 0) {
       className = "cell-even";
@@ -38,6 +39,7 @@ export const Measure = ({ measure, measureInt }: IMeasureProps) => {
     if (key == activeCell) {
       className += "-active";
     }
+
     return className;
   };
 

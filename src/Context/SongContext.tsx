@@ -22,6 +22,7 @@ export interface ISongContext {
   setTimeSignature: (timeSignature: number) => void;
   bpm: number;
   setBpm: (bpm: number) => void;
+
   clearSongContext: () => void;
 }
 

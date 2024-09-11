@@ -41,7 +41,6 @@ export const Header = () => {
     timeSignature: number,
     bpm: number
   ) => {
-    console.log(bpm);
     const soundArray = createSoundArray(songState, songNameInt, timeSignature);
     playSong(bpm, 4, soundArray);
   };
@@ -112,14 +111,13 @@ export const Header = () => {
         <Tooltip title="save song">
           <i onClick={handleSave} className="far fa-save save-song"></i>
         </Tooltip>
+        <i
+          className="fa-solid fa-play"
+          onClick={() =>
+            handleCreateSoundArray(songState, songNameInt, timeSignature, bpm)
+          }
+        ></i>
       </div>
-      <button
-        onClick={() =>
-          handleCreateSoundArray(songState, songNameInt, timeSignature, bpm)
-        }
-      >
-        TEST SOUND ARRAY
-      </button>
       <div className="logout-and-username">
         <div className="logout-button" onClick={handleLogout}>
           LOGOUT

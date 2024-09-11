@@ -9,9 +9,6 @@ export const Dashboard = () => {
   const [songNamesModalOpen, setSongNamesModalOpen] = useState(false);
   const { songNames } = useSongContext();
 
-  console.log("test ci");
-  console.log("test ci");
-
   return (
     <div className="dashboard-container">
       <div className="dashboard-title">Bass Tab Maker</div>
